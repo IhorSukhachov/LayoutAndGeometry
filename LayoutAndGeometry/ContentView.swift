@@ -45,25 +45,31 @@ struct ContentView: View {
 //        .background(.red)
 //        .frame(width: 400, height: 400)
 //        .background(.blue)
-        HStack(alignment: .midAccountAndName) {
-            VStack {
-                Text("Aldrin")
-                    .alignmentGuide(.midAccountAndName) {d in
-                        d[VerticalAlignment.center]
-                    }
-                Image("aldrin")
-                    .resizable()
-                    .frame(width: 64, height: 64)
-            }
-            VStack {
-                Text("Full name:")
-                
-                Text("Some Aldrin")
-                    .alignmentGuide(.midAccountAndName) {d in
-                        d[VerticalAlignment.center]
-                    }
-                    .font(Font.largeTitle)
-            }
+//        HStack(alignment: .midAccountAndName) {
+//            VStack {
+//                Text("Aldrin")
+//                    .alignmentGuide(.midAccountAndName) {d in
+//                        d[VerticalAlignment.center]
+//                    }
+//                Image("aldrin")
+//                    .resizable()
+//                    .frame(width: 64, height: 64)
+//            }
+//            VStack {
+//                Text("Full name:")
+//                
+//                Text("Some Aldrin")
+//                    .alignmentGuide(.midAccountAndName) {d in
+//                        d[VerticalAlignment.center]
+//                    }
+//                    .font(Font.largeTitle)
+//            }
+//        }
+        GeometryReader { proxy in
+            Image("aldrin")
+                .resizable()
+                .scaledToFit()
+                .frame(width: proxy.size.width * 0.8)
         }
         
         
