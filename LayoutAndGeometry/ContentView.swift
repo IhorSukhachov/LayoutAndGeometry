@@ -47,12 +47,13 @@ struct ContentView: View {
                         let screenHeight = fullView.size.height
                         let progress = min(max(minY / screenHeight, 0), 1)
                         let scale = 0.5 + (progress * 0.5)
+                        let hue = progress
                         
                         
                         Text("Row #\(index)")
                             .font(.title)
                             .frame(maxWidth: .infinity)
-                            .background(colors[index % 7])
+                            .background(Color(hue:hue, saturation: 0.8, brightness: 0.9))
                             .rotation3DEffect(.degrees(proxy.frame(in: .global).minY - fullView.size.height / 2) / 5, axis: (x: 0, y: 1, z: 0))
 //                            .opacity(opacity)
                             .scaleEffect(scale)
