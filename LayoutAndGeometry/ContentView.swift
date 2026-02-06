@@ -40,9 +40,13 @@ struct ContentView: View {
             ScrollView(.vertical) {
                 ForEach(0..<50) { index in
                     GeometryReader { proxy in
+//                        let minY = proxy.frame(in: .global).minY
+//                        let fadeStart: CGFloat = 200
+//                        let opacity = min(max((minY - fadeStart) / fadeStart, 0), 1)
                         let minY = proxy.frame(in: .global).minY
-                        let fadeStart: CGFloat = 200
-                        let opacity = min(max((minY - fadeStart) / fadeStart, 0), 1)
+                        let screenHeight = fullView.size.height
+                        let progress = min(max(minY / screenHeight, 0), 1)
+                        let scale = 0.5 + (progress * 0.5)
                         
                         
                         Text("Row #\(index)")
@@ -50,7 +54,8 @@ struct ContentView: View {
                             .frame(maxWidth: .infinity)
                             .background(colors[index % 7])
                             .rotation3DEffect(.degrees(proxy.frame(in: .global).minY - fullView.size.height / 2) / 5, axis: (x: 0, y: 1, z: 0))
-                            .opacity(opacity)
+//                            .opacity(opacity)
+                            .scaleEffect(scale)
                     }
                     .frame(height: 40)
                 }
